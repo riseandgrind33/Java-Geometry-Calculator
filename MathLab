@@ -1,0 +1,141 @@
+import java.awt.Component;
+
+import javax.swing.JOptionPane;
+public class MathLab
+{
+	public static double intside,side, length,intlength, intwidth,width, intheight, height, intbase1, base1, intbase2,base2, intraidus, radius;
+	
+	public static void main (String args[]){
+		JOptionPane.showMessageDialog(null,"Geometry Cheat Sheet");
+		enterData();
+		display2DPerimeters();
+		display2DAreas();
+		display3DSurfaceAreas();
+		display3DVolumes();			
+	}
+	
+	public static void enterData() 						
+	{	
+		String side = JOptionPane.showInputDialog("Enter side.");										
+		intside = Integer.parseInt(side);
+		String Length = JOptionPane.showInputDialog("Enter Length");										
+		 intlength = Integer.parseInt(Length);
+		String width = JOptionPane.showInputDialog("Enter width");										
+		 intwidth = Integer.parseInt(width);
+		String height = JOptionPane.showInputDialog("Enter height");									
+		 intheight = Integer.parseInt(height);
+		String base1 = JOptionPane.showInputDialog("Enter first base.");									
+		 intbase1 = Integer.parseInt(base1);
+		String base2 = JOptionPane.showInputDialog("Enter second base");										
+		 intbase2 =Integer.parseInt(base2);
+		String radius = JOptionPane.showInputDialog("Enter your radius here.");										
+		intraidus = Integer.parseInt(radius);
+	}
+
+	public static void display2DPerimeters() 						
+	{	
+		JOptionPane.showMessageDialog(null, "\n" +"Perimeters of 2D Shapes"+"\n"+"Square Perimeter: "+ 
+	    Geometry.squarePerimeter(intside)+"\n" +
+		"Pentagon Perimeter:" + 
+	     Geometry.pentagonPerimeter(intside)+"\n"+
+		"Hexagon Perimeter:" + Geometry.hexagonPerimeter(intside)+"\n"+
+		"Octagon Perimeter:" + Geometry.octagonPerimeter(intside)+"\n"+
+		"Rectangle Perimeter:" + Geometry.rectanglePerimeter(length,width)+"\n"+
+		"Circle Perimeter (circumference): " + Geometry.circumference(intraidus));
+	}
+	
+	public static void display2DAreas() 						
+	{	
+		JOptionPane.showMessageDialog(null,"Areas of 2D Shapes"+"\n"+"Square Area:                      " + Geometry.squareArea(intside)+"\n"+
+		"Rectangle Area:                   " + Geometry.rectangleArea(intlength,intwidth)+"\n"+
+		"Parallelogram Area:               " + Geometry.parallelogramArea(intbase1,intheight)+"\n"+
+		"Triangle Area:                    " + Geometry.triangleArea(intbase1,intheight)+"\n"+		
+		"Trapezoid Area:                   " + Geometry.trapezoidArea(intbase1,intbase2,intheight)+"\n"+
+		"Hexagon Area:                     " + Geometry.hexagonArea(intheight)+"\n"+
+		"Circle Area:                      " + Geometry.circleArea(intraidus));
+	}
+	public static void display3DSurfaceAreas() 						
+	{	
+		JOptionPane.showMessageDialog(null,"Surface Areas of 3D Shapes"+"\n"+
+		"Cube Surface Area:                " + Geometry.cubeSurfaceArea(intside)+"\n"+
+		"Square Prism Surface Area:        " + Geometry.squarePrismSurfaceArea(intside,intheight)+"\n"+
+		"Sphere Surface Area:              " + Geometry.sphereSurfaceArea(intraidus));
+	}
+	
+	public static void display3DVolumes() 						
+	{	
+		JOptionPane.showMessageDialog(null,"Volumes of 3D Shapes"+"\n"+
+		"Cube Volume:                      " + Geometry.cubeVolume(intside)+"\n"+
+		"Square Prism Volume:              " + Geometry.squarePrismVolume(intside,intheight)+"\n"+
+		"Rectangular Prism Volume:         " + Geometry.rectangularPrismVolume(intlength,intwidth,intheight)+"\n"+
+		"Pyramid Volume:                   " + Geometry.pyramidVolume(intside,intheight,intlength)+"\n"+
+		"Cylinder Volume:                  " + Geometry.cylinderVolume(intraidus,intheight));
+	}
+}
+class Geometry
+{
+    
+   public static double squarePerimeter(double intside){
+	   return 4 * intside;
+	   } 
+	public static double pentagonPerimeter(double intside){
+		return 5 * intside;
+		}
+   public static double hexagonPerimeter(double intside){
+	   return 6 * intside;
+	   } 
+	public static double octagonPerimeter(double intside){
+		return 8 * intside;
+		}
+   public static double rectanglePerimeter(double l, double w){
+	   return 2 / (l * w);
+	   }
+   public static double circumference(double r){
+	   return 2*Math.PI*r;
+	   }
+	public static double squareArea (double s){ 
+		return s * s; 
+		}
+   public static double rectangleArea(double l, double w){
+	   return l * w;
+	   }
+   public static double parallelogramArea(double b, double h){
+	   return b * h;
+	   }
+   public static double triangleArea(double h, double b){
+	   return (h * b)/2;
+	   }
+   public static double trapezoidArea(double a, double b, double h){
+	   return (a += b / 2)*h;
+	   }
+   public static double hexagonArea(double a){
+	   return ((3* 1.73205080757)/(2)) * a;
+	   }
+   public static double circleArea(double r){
+	   return Math.PI*r*r;
+	   }
+	public static double cubeSurfaceArea (double s) {
+		return 6 * s * s; 
+		}
+   public static double squarePrismSurfaceArea(double a, double h) {
+	   return 2 *(a * a) + 4 * a * h;
+	   }
+   public static double sphereSurfaceArea(double r) {
+	   return 4 * Math.PI * (r * r);
+	   }
+	public static double cubeVolume (double s){
+		return s * s * s;
+		}
+	public static double squarePrismVolume(double a, double h){
+		return (a * a) * h;
+		}
+   public static double rectangularPrismVolume(double w, double h, double l){
+	   return w * h * l;
+	   }
+   public static double pyramidVolume(double l, double w, double h){
+	   return (l * w * h)/3;
+	   }
+   public static double cylinderVolume(double r, double h){
+	   return Math.PI * (r * r) * h;
+	   }
+}
